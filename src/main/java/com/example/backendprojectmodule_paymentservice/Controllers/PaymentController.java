@@ -3,12 +3,17 @@ package com.example.backendprojectmodule_paymentservice.Controllers;
 import com.example.backendprojectmodule_paymentservice.DTO.PaymentDTO;
 import com.example.backendprojectmodule_paymentservice.Services.PaymentServiceInterface;
 import com.razorpay.RazorpayException;
+import com.razorpay.Webhook;
 import com.stripe.exception.StripeException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/payment")
@@ -30,7 +35,9 @@ public class PaymentController {
         // Get payment status
     }
 
-    public void handleWebHook() {
+    @PostMapping("/webhook")
+    public void handleWebHook(@RequestBody Map<String, String> webhook) {
+        System.out.println(webhook);
         // Handle web hook
     }
 }
